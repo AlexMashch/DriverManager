@@ -6,14 +6,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<link rel="./css/all.css" type="text/css"
-	href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css" rel="stylesheet" type="text/css" >
 <!-- jQuery -->
-<script type="text/javascript" charset="utf8"
+<script type="text/javascript" charset="UTF-8"
 	src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
 <!-- DataTables -->
-<script type="text/javascript" charset="utf8"
+<script type="text/javascript" charset="UTF-8"
 	src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="./js/jquery.jpostal.js"></script>
 <script>
@@ -35,6 +34,60 @@
 			}
 		});
 	});
+
+	$(function() {
+		$('#namequerysumit').click(function() {
+			var input_name = $('#queryname').val();
+			var username = /^[a-zA-Z]+$/;
+			if (input_name == "" || input_name == null) {
+				alert("名前を入力必要です。");
+				return false;
+			} else if (!username.test($('#queryname').val())) {
+				alert("英字を入力してください。");
+				return false;
+			}
+		})
+	})
+
+	$(function() {
+		$('#idquerysumit').click(function() {
+			var input_id = $('#queryid').val();
+			var userid = /^[0-9]+$/;
+			if (input_id == "" || input_id == null) {
+				alert("IDを入力必要です。");
+				return false;
+			} else if (!userid.test($('#queryid').val())) {
+				alert("数字を入力してください。");
+				return false;
+			}
+		})
+	})
+
+    function cop(){
+        var str=document.getElementById("post1").value;
+        document.getElementById("addpost").value = str;
+
+        var str=document.getElementById("post2").value;
+        document.getElementById("addcode").value = str;
+    }
+
+    function cop1(){
+        var str=document.getElementById("addpost").value;
+        document.getElementById("editpost").value = str;
+
+        var str=document.getElementById("addcode").value;
+        document.getElementById("editcode").value = str;
+
+        var str=document.getElementById("address1").value;
+        document.getElementById("editprefecture").value = str;
+
+        var str=document.getElementById("address2").value;
+        document.getElementById("editcity").value = str;
+
+        var str=document.getElementById("address3").value;
+        document.getElementById("edittown").value = str;
+
+    }
 </script>
 </head>
 <body>
@@ -46,71 +99,40 @@
 			<td>id</td>
 			<td>name</td>
 			<td>mile</td>
+			<td>post</td>
+			<td>code</td>
+			<td>prefecture</td>
 			<td>city</td>
+			<td>town</td>
 
 		</tr>
 
 		<c:forEach items="${drivers}" var="driver">
 			<tr>
-				<td id="${driver.id}">${driver.id}</td>
-				<td id="${driver.id}">${driver.name}</td>
+				<td id="${driver.id }">${driver.id}</td>
+				<td id="${driver.id }">${driver.name}</td>
 				<td id="${driver.id}">${driver.mile}</td>
+				<td id="${driver.id}">${driver.post}</td>
+				<td id="${driver.id}">${driver.code}</td>
+				<td id="${driver.id}">${driver.prefecture}</td>
 				<td id="${driver.id}">${driver.city}</td>
+				<td id="${driver.id}">${driver.town}</td>
 			</tr>
 		</c:forEach>
 	</table>
 
-
-	<script>
-		<script type="text/javascript">
-
-		$(function() {
-			$('#namequerysumit').click(function() {
-				var input_name = $('#queryname').val();
-				var username = /^[a-zA-Z]+$/;
-				if (input_name == "" || input_name == null) {
-					alert("名前を入力必要です。");
-					return false;
-				} else if (!username.test($('#queryname').val())) {
-					alert("英字を入力してください。");
-					return false;
-				}
-			})
-		})
-
-		$(function() {
-			$('#idquerysumit').click(function() {
-				var input_id = $('#queryid').val();
-				var userid = /^[0-9]+$/;
-				if (input_id == "" || input_id == null) {
-					alert("IDを入力必要です。");
-					return false;
-				} else if (!userid.test($('#queryid').val())) {
-					alert("数字を入力してください。");
-					return false;
-				}
-			})
-		})
-
-		/* $(function(){
-		 $('#add').click(function(){
-		 var input_name = $('#addname').val();
-		 var input_mile = $('#addmile').val();
-		 var input_city = $('#addcity').val();
-		 var username = /^[a-zA-Z]+$/;
-		 var usermile = /^(?:[1-9]?\d|100)$/;
-		 var usercity = /^[a-zA-Z]+$/;
-
-		 if(input_name == "" || i */
-	</script>
 	<div id="edit_comm" class="all" align="center">
 		<h2 id="edit_title">ドライバー編集</h2>
 		<form id="editForm" action="update" method="post">
 			<input id="editid" type="text" placeholder="要修改的id" id="edit_id"
 				name="id" /><br> <input id="editname" type="text"
-				placeholder="氏名" name="name" /> <input id="editmile" type="text"
-				placeholder="キロメートル" name="mile" /> <input id="editcity"
-				type="text" placeholder="シーティー" name="city" /> <input type="submit"
+				placeholder="氏名" name="name"/> <input id="editmile" type="text"
+				placeholder="キロメートル" name="mile"/><input id="editpost"
+				type="text" placeholder="郵便" name="post"/><input id="editcode"
+				type="text" placeholder="番号" name="code"/><input id="editprefecture"
+				type="text" placeholder="都道府県" name="prefecture" /><input id="editcity"
+				type="text" placeholder="市区" name="city"/><input id="edittown"
+				type="text" placeholder="町村" name="town"/><input type="submit"
 				value="修正の確認" />
 		</form>
 	</div>
@@ -126,13 +148,30 @@
 	<div id="add_comm" class="all" align="center">
 		<h2 id="edit_title">ドライバーの追加</h2>
 		<form id="addForm" action="add" method="post" class="checkform">
-			<input id="addid" type="text" placeholder="番号" name="id" /> <input
-				id="addname" type="text" placeholder="氏名" name="name" /> <input
-				id="addmile" type="text" placeholder="キロメートル" name="mile" /> <input
-				id="addcity" type="text" placeholder="シーティー" name="city"
-				class="number" /> <input type="submit" value="添の加" />
+			<input id="addid" type="text" placeholder="番号" name="id"/> <input
+				id="addname" type="text" placeholder="氏名" name="name"/> <input
+				id="addmile" type="text" placeholder="キロメートル" name="mile"/><input id="addpost"
+				type="text" placeholder="郵便" name="post" oninput="cop1()"/><input id="addcode"
+				type="text" placeholder="番号" name="code" oninput="cop1()"/><input id="address1"
+				type="text" placeholder="都道府県" name="prefecture" oninput="cop1()"/><input id="address2"
+				type="text" placeholder="市区" name="city" oninput="cop1()"/><input id="address3"
+				type="text" placeholder="町村" name="town" oninput="cop1()"/><input type="submit" value="添加" />
 		</form>
 	</div>
+
+		<div class="block" align="center">
+		<p>郵便番号を入力してください。</p>
+		<input id="post1" maxlength="3" type="text" placeholder="000" oninput="cop()">
+		<input id="post2" maxlength="4" type="text" placeholder="0000" oninput="cop()">
+		<input id="btn" type="button" value="住所検索">
+	</div>
+
+<!-- 	<div class="block" align="center">
+		<p>住所検索ボタンを押すとここに住所が表示されます。</p>
+		<input id="address1" type="text" placeholder="都道府県"> <input
+			id="address2" type="text" placeholder="市区"> <input
+			id="address3" type="text" placeholder="町村">
+	</div>-->
 
 	<div id="edit_comm" class="all" align="center">
 		<h2>学生Id查詢</h2>
@@ -146,22 +185,11 @@
 		<h2>学生 name查詢</h2>
 		<form id="nameForm" action="querybyname" method="post">
 			<input id="queryname" type="text" placeholder="要查詢的name" name="name" />
-			<input id="namequerysumit" type="submit" value="查詢" />
+			<!--  <input id="namequerysumit" type="submit" value="查詢" /> -->
+			<button id="namequerysumit">
+			查詢
+			</button>
 		</form>
-	</div>
-
-	<div class="block" align="center">
-		<p>郵便番号を入力してください。</p>
-		<input id="post1" maxlength="3" type="text" placeholder="000">
-		<input id="post2" maxlength="4" type="text" placeholder="0000">
-		<input id="btn" type="button" value="住所検索">
-	</div>
-
-	<div class="block" align="center">
-		<p>住所検索ボタンを押すとここに住所が表示されます。</p>
-		<input id="address1" type="text" placeholder="都道府県"> <input
-			id="address2" type="text" placeholder="市区"> <input
-			id="address3" type="text" placeholder="町村">
 	</div>
 
 	<div id="Pratice" class="all" align="center">

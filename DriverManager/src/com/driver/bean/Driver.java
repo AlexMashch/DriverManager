@@ -5,6 +5,11 @@ public class Driver {
 	private String name;
 	private int mile;
 	private String city;
+	private String post;
+	private String code;
+	private String prefecture;
+	private String town;
+
 
 	/**
 	 * @return id
@@ -14,8 +19,7 @@ public class Driver {
 	}
 
 	/**
-	 * @param id
-	 *            セットする id
+	 * @param id セットする id
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -29,8 +33,7 @@ public class Driver {
 	}
 
 	/**
-	 * @param name
-	 *            セットする name
+	 * @param name セットする name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -44,8 +47,7 @@ public class Driver {
 	}
 
 	/**
-	 * @param mile
-	 *            セットする mile
+	 * @param mile セットする mile
 	 */
 	public void setMile(int mile) {
 		this.mile = mile;
@@ -59,31 +61,89 @@ public class Driver {
 	}
 
 	/**
-	 * @param city
-	 *            セットする city
+	 * @param city セットする city
 	 */
 	public void setCity(String city) {
 		this.city = city;
 	}
 
-	/*
-	 * (非 Javadoc)
-	 *
-	 * @see java.lang.Object#toString()
+	/**
+	 * @return post
 	 */
-	@Override
-	public String toString() {
-		return "Driver [id=" + id + ", name=" + name + ", mile=" + mile + ", city=" + city + ", getId()=" + getId()
-				+ ", getName()=" + getName() + ", getMile()=" + getMile() + ", getCity()=" + getCity() + ", getClass()="
-				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+	public String getPost() {
+		return post;
 	}
 
-	public Driver(int id, String name, int mile, String city) {
+	/**
+	 * @param post セットする post
+	 */
+	public void setPost(String post) {
+		this.post = post;
+	}
+
+	/**
+	 * @return code
+	 */
+	public String getCode() {
+		return code;
+	}
+
+	/**
+	 * @param code セットする code
+	 */
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	/**
+	 * @return prefecture
+	 */
+	public String getPrefecture() {
+		return prefecture;
+	}
+
+	/**
+	 * @param prefecture セットする prefecture
+	 */
+	public void setPrefecture(String prefecture) {
+		this.prefecture = prefecture;
+	}
+
+	/**
+	 * @return town
+	 */
+	public String getTown() {
+		return town;
+	}
+
+	/**
+	 * @param town セットする town
+	 */
+	public void setTown(String town) {
+		this.town = town;
+	}
+
+	@Override
+	public String toString() {
+		return "Driver [id=" + id + ", name=" + name + ", mile=" + mile + ", city=" + city + ", post=" + post
+				+ ", code=" + code + ", prefecture=" + prefecture + ", town=" + town + ", getPost()=" + getPost()
+				+ ", getCode()=" + getCode() + ", getPrefecture()=" + getPrefecture() + ", getTown()=" + getTown()
+				+ ", getId()=" + getId() + ", getName()=" + getName() + ", getMile()=" + getMile() + ", getCity()="
+				+ getCity() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
+	}
+
+	public Driver(int id, String name, int mile, String city, String post, String code, String prefecture,
+			String town) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.mile = mile;
 		this.city = city;
+		this.post = post;
+		this.code = code;
+		this.prefecture = prefecture;
+		this.town = town;
 	}
 
 	public Driver() {

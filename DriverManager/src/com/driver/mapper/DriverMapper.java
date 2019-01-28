@@ -14,7 +14,12 @@ public class DriverMapper implements RowMapper<Driver> {
 		driver.setId(rs.getInt(1));
 		driver.setName(rs.getString(2));
 		driver.setMile(rs.getInt(3));
-		driver.setCity(rs.getString(4));
+		driver.setPost(rs.getString(4));
+		driver.setCode(rs.getString(5));
+		driver.setPrefecture(rs.getString(6));
+		driver.setCity(rs.getString(7));
+		driver.setTown(rs.getString(8));
+
 		return driver;
 	}
 }

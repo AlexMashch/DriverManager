@@ -26,7 +26,11 @@
 				<td>id</td>
 				<td>name</td>
 				<td>mile</td>
+				<td>post</td>
+				<td>code</td>
+				<td>prefecture</td>
 				<td>city</td>
+				<td>town</td>
 
 
 			</tr>
@@ -36,7 +40,11 @@
 					<td id="${driver.id }">${driver.id}</td>
 					<td id="${driver.id }">${driver.name}</td>
 					<td id="${driver.id}">${driver.mile}</td>
+					<td id="${driver.id}">${driver.post}</td>
+					<td id="${driver.id}">${driver.code}</td>
+					<td id="${driver.id}">${driver.prefecture}</td>
 					<td id="${driver.id}">${driver.city}</td>
+					<td id="${driver.id}">${driver.town}</td>
 
 
 				</tr>

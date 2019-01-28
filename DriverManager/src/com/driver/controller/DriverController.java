@@ -47,14 +47,18 @@ public class DriverController {
 		return "driver";
 	}
 	@RequestMapping(value = "/update")
-	public String updateDriver(String id,String name, String mile,String city,  Model model) {
+	public String updateDriver(String id,String name, String mile,String post,String code,String prefecture,String city,String town,  Model model) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		DriverDao dao = (DriverDao) context.getBean("dao");
 		Driver driver = new Driver();
 		driver.setId(Integer.parseInt(id));
 		driver.setName(name);
 		driver.setMile(Integer.parseInt(mile));
+		driver.setPost(post);
+		driver.setCode(code);
+		driver.setPrefecture(prefecture);
 		driver.setCity(city);
+		driver.setTown(town);
 		boolean result = dao.updateDriver(driver);
 		if (result) {
 			System.out.println("updateê¨å˜");
@@ -78,14 +82,18 @@ public class DriverController {
 		return "index";
 	}
 	@RequestMapping(value = "/add")
-	public String addDri(String id,String name, String mile,String city,  Model model) {
+	public String addDri(String id,String name, String mile,String post,String code,String prefecture,String city,String town,  Model model) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		DriverDao dao = (DriverDao) context.getBean("dao");
 		Driver driver = new Driver();
 		driver.setId(Integer.parseInt(id));
 		driver.setName(name);
 		driver.setMile(Integer.parseInt(mile));
+		driver.setPost(post);
+		driver.setCode(code);
+		driver.setPrefecture(prefecture);
 		driver.setCity(city);
+		driver.setTown(town);
 		boolean result = dao.addDri(driver);
 		if (result) {
 			System.out.println("Addê¨å˜");

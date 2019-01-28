@@ -33,6 +33,13 @@
     border-left: 3px solid #000;
     color:red
   }
+  #block{
+    width: 500px;
+    height:300px;
+    margin: 20px auto;
+    border-left: 3px solid #000;
+    color:red
+  }
   #all_comm{
     height:600px;
   }
@@ -45,4 +52,10 @@
     border: none;
     border-bottom: 3px solid #000;
     margin: 20px 10px;
+  }
+  #Pratice{
+    width: 500px;
+    margin: 20px auto;
+    border-left: 3px solid #000;
+    <!-- display: none;-->
   }
