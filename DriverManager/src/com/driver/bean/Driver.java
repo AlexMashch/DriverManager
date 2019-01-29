@@ -1,5 +1,6 @@
 package com.driver.bean;
 
+
 public class Driver {
 	private int id;
 	private String name;

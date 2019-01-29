@@ -43,7 +43,7 @@ public class DriverController {
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		DriverDao dao = (DriverDao) context.getBean("dao");
 		model.addAttribute("drivers", dao.querybyname(name));
-		return "driver";
+		return "index";
 	}
 	@RequestMapping(value = "/update")
 	public String updateDriver(String id,String name, String mile,String post,String code,String prefecture,String city,String town,  Model model) {

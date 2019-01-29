@@ -39,9 +39,9 @@ public class DriverDao {
 		return driverList;
 	}
 	public List<Driver> querybyid(String id) {
-		String sql = "select id,name,mile,post,code,prefecture,city,town from driver where id like 'id'";
+		String sql = "select * from driver where id ="+id;
 		List<Driver> driverList = new ArrayList<Driver>();
-		driverList = (ArrayList<Driver>) jdbcTemplate.query(sql, new DriverMapper());
+		driverList =jdbcTemplate.query(sql, new DriverMapper());
 		return driverList;
 	}
 	public boolean addDri(Driver driver) {
