@@ -11,12 +11,11 @@ import com.driver.dao.DriverDao;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class DriverController {
-@RequestMapping(value="/all")
+@RequestMapping(value="/pageall")
 	public String queryAll(Model model) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		DriverDao dao = (DriverDao) context.getBean("dao");
@@ -37,7 +36,7 @@ public class DriverController {
 		ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
 		DriverDao dao=(DriverDao) context.getBean("dao");
 		model.addAttribute("drivers", dao.querybyid(id));
-		return "driver";
+		return "index";
 	}
 	@RequestMapping(value = "/querybyname")
 	public String querybyname(String name,Model model) {
@@ -102,5 +101,26 @@ public class DriverController {
 		}
 		model.addAttribute("drivers", dao.queryAll());
 		return "index";
+	}
+	@RequestMapping(value = "/all")
+	public String queryPageAll(String sPage,String ePage,Model model) {
+		if(sPage==null) {
+			sPage="0";
+		}
+		if(ePage==null) {
+			ePage="5";
+		}
+		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		DriverDao dao=new DriverDao();
+		dao = (DriverDao) context.getBean("dao");
+		ArrayList<Driver> driverList=new ArrayList<Driver>();
+		driverList=(ArrayList<Driver>) dao.queryAll();
+		int count=driverList.size();
+		int start=Integer.valueOf(sPage)*Integer.valueOf(ePage);
+		double pageCount=Math.ceil(Integer.valueOf(count)/Integer.valueOf(ePage));
+		driverList=(ArrayList<Driver>) dao.queryPageAll(start, Integer.parseInt(ePage));
+		model.addAttribute("drivers",driverList);
+		model.addAttribute("pageCounts", pageCount);
+		return "driver";
 	}
 }

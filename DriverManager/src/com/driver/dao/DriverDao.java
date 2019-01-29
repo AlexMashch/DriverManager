@@ -21,7 +21,7 @@ public class DriverDao {
 
 	/**
 	 * @param jdbcTemplate
-	 *            ÉZÉbÉgÇ∑ÇÈ jdbcTemplate
+	 *            „Çª„ÉÉ„Éà„Åô„Çã jdbcTemplate
 	 */
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
@@ -39,7 +39,7 @@ public class DriverDao {
 		return driverList;
 	}
 	public List<Driver> querybyid(String id) {
-		String sql = "select id,name,mile,post,code,prefecture,city,town from driver where id like '%"+id+"%'";
+		String sql = "select id,name,mile,post,code,prefecture,city,town from driver where id like 'id'";
 		List<Driver> driverList = new ArrayList<Driver>();
 		driverList = (ArrayList<Driver>) jdbcTemplate.query(sql, new DriverMapper());
 		return driverList;
@@ -59,4 +59,16 @@ public class DriverDao {
 		String sql = "delete from driver where id = ?";
 		return jdbcTemplate.update(sql, id) == 1;
 	}
+	public int numCount() {
+		String sql="select count(*) from driver";
+		int sumdata=jdbcTemplate.queryForInt(sql);
+		return sumdata;
+	}
+	public List<Driver> queryPageAll(int start,int end){
+		String sql="select * from driver limit ?,?";
+		List<Driver> driverList = new ArrayList<Driver>();
+		driverList = (ArrayList<Driver>) jdbcTemplate.query(sql, new Object[] {start,end},new DriverMapper());
+		return driverList;
+	}
+
 }

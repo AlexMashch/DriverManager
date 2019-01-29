@@ -51,5 +51,11 @@
 			</c:forEach>
 		</table>
 	</div>
+
+		<ul>
+		<c:forEach var="pageNum" begin="0" end="${pageCounts}" step="1">
+　			<a href="http://localhost:8080/DriverManager/all?sPage=${pageNum}">第 ${pageNum+1}ページ></a>
+		</c:forEach>
+		</ul>
 </body>
 </html>
