@@ -117,7 +117,7 @@ public class DriverController {
 		driverList=(ArrayList<Driver>) dao.queryAll();
 		int count=driverList.size();
 		int start=Integer.valueOf(sPage)*Integer.valueOf(ePage);
-		double pageCount=Math.ceil(Integer.valueOf(count)/Integer.valueOf(ePage));
+		int pageCount=(int)Math.ceil(Integer.valueOf(count)/Integer.valueOf(ePage));
 		driverList=(ArrayList<Driver>) dao.queryPageAll(start, Integer.parseInt(ePage));
 		model.addAttribute("drivers",driverList);
 		model.addAttribute("pageCounts", pageCount);
